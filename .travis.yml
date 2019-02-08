@@ -19,3 +19,16 @@ after_success:
   - docker push arthurwei/multi-server
   - docker push arthurwei/multi-worker
 
+deploy:
+  provider: dlasticbeanstalk
+  region: us-west-2
+  app: multi-docker
+  env:
+  bucker_name:
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+
